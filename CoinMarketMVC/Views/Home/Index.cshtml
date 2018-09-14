@@ -1,0 +1,70 @@
+﻿@model List<CoinMarketMVC.Models.Coin>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table table-bordered table-responsive table-hover">
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    name
+                </th>
+                <th>
+                    symbol
+                </th>
+                <th>rank</th>
+                <th>price_usd</th>
+                <th>price_btc</th>
+                <th>percent_change_1h</th>
+                <th>percent_change_24h</th>
+                <th>percent_change_7d</th>
+                <th>last_updated</th>
+
+            </tr>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td style="border:1px solid black">
+                        <fieldset>
+                            <b style="text-align:center; width:22%; font-family:'Agency FB'; font-size:small; background-color:#C8E6C9; color:red">
+                                @item.id
+                            </b>
+                        </fieldset>
+                    </td>
+                    <td>
+                        @item.name
+                    </td>
+                    <td>
+                        @item.symbol
+                    </td>
+                    <td>
+                        @item.rank
+                    </td>
+                    <td>@item.price_usd</td>
+                    <td>@item.price_btc</td>
+                    <td>@item.percent_change_1h</td>
+                    <td>@item.percent_change_24h</td>
+                    <td>@item.percent_change_7d</td>
+                    <td>@CoinMarketMVC.Util.TimeUtil.UnixTimestampToDateTime(item.last_updated)</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">        
+    </div>
+</div>
