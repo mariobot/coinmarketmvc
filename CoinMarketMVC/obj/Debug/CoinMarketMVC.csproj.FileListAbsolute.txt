@@ -89,3 +89,5 @@ C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\obj\Debug\CoinMarketM
 C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\obj\Debug\CoinMarketMVC.csproj.CopyComplete
 C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\obj\Debug\CoinMarketMVC.dll
 C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\obj\Debug\CoinMarketMVC.pdb
+C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\bin\Chsword.JDynamic.dll
+C:\Users\mabotero\source\repos\CoinMarketMVC\CoinMarketMVC\bin\Chsword.JDynamic.pdb

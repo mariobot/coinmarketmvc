@@ -17,7 +17,7 @@ namespace CoinMarketMVC.Controllers
         {
             //https://api.coinmarketcap.com/v1/ticker/bitcoin/
             //https://api.coinmarketcap.com/v2/listings/
-            string result = GET("https://api.coinmarketcap.com/v1/ticker/");
+            string result = Util.Services.GET_V1("https://api.coinmarketcap.com/v1/ticker/");
             
             //var _coins = (List<Coin>)JsonConvert.DeserializeObject<List<Coin>>(result, typeof(List<Coin>)));
 
@@ -38,31 +38,6 @@ namespace CoinMarketMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        string GET(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            try
-            {
-                WebResponse response = request.GetResponse();
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8);
-                    return reader.ReadToEnd();
-                }
-            }
-            catch (WebException ex)
-            {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-                    // log errorText
-                }
-                throw;
-            }
-        }
+        }       
     }
 }
