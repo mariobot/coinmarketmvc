@@ -1,60 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Chsword;
 using CoinMarketMVC.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using CoinmarketcapAPIv2.DataContracts;
 
 namespace CoinMarketMVC.Controllers
 {
     public class CryptocurrencyController : Controller
     {
-        // GET: Cryptocurrency
-        public ActionResult Index()
+        CoinmarketcapAPIv2.CoinmarketcapAPI API = new CoinmarketcapAPIv2.CoinmarketcapAPI();
+
+        public async Task<ActionResult> Index()
         {
+            CoinmarketcapAPIv2.DataContracts.Ticker.Ticker _ticker = await API.GetTicker(0, 100, null);
 
-
-            // https://pro-api.coinmarketcap.com/v1/cryptocurrency/info
-            //  https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest             
-            string result = Util.Services.GET_V2("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
-            string result2 = Util.Services.GET_V2("https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=2");
-            
-
-            //var _coins = (List<Coin>)JsonConvert.DeserializeObject<List<Coin>>(result, typeof(List<Coin>)));
-
-            //List<Coin> myDeserializedObjList = (List<Coin>)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(List<Coin>));
-
-            //dynamic results = JsonConvert.DeserializeObject<dynamic>(result);
-            //var _data = results.data;
-            //List<dynamic> myDeserializedObjList = (List<dynamic>)Newtonsoft.Json.JsonConvert.DeserializeObject(_data, typeof(List<dynamic>));
-
-            RootObject rex = (RootObject)Newtonsoft.Json.JsonConvert.DeserializeObject(result, typeof(RootObject));
-            dynamic rex2 = new JDynamic(result2);            
-            //List<Coin2> rex = CastDataToList<Coin2>(result);
-
-            return View(rex);
+            return View(_ticker);
         }
 
-        private static List<T> CastDataToList<T>(string result) //where T : System.IComparable<T>
+        public async Task<ActionResult> Listing()
         {
-            JObject resultObject = JObject.Parse(result);
+            CoinmarketcapAPIv2.DataContracts.Listings.Listings _listings = await API.GetListings();
 
-            // get JSON result objects into a list
-            List<JToken> results = resultObject["data"].Children().ToList();
+            return View(_listings);
+        }
 
-            // serialize JSON results into .NET objects
-            List<T> ListaEntidades = new List<T>();
-            foreach (JToken item in results)
-            {
-                // JToken.ToObject is a helper method that uses JsonSerializer internally
-                T Entidad = item.ToObject<T>();
-                ListaEntidades.Add(Entidad);
-            }
+        public async Task<ActionResult> Global() {
+            
+            CoinmarketcapAPIv2.DataContracts.Global.Global _global = await API.GetGlobal();
+            
+            return View(_global);
+        }
 
-            return ListaEntidades;
+        public async Task<ActionResult> Currency(string id) {
+
+            CoinmarketcapAPIv2.DataContracts.Ticker.TickerSpecific _tickerSpecific = await API.GetTickerSecific(id);
+
+            return View(_tickerSpecific);
         }
     }
 }

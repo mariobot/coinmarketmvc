@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -150,8 +151,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CoinmarketcapAPI.cs" />
     <Compile Include="Controllers\CryptocurrencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataContracts\Currencies\AssetSymbols.cs" />
+    <Compile Include="DataContracts\Global\Global.cs" />
+    <Compile Include="DataContracts\Listings\Listings.cs" />
+    <Compile Include="DataContracts\Metadata.cs" />
+    <Compile Include="DataContracts\Ticker\Ticker.cs" />
+    <Compile Include="DataContracts\Ticker\TickerSpecific.cs" />
+    <Compile Include="Endpoints\Endpoints.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -203,6 +212,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Cryptocurrency\Index.cshtml" />
+    <Content Include="Views\Cryptocurrency\Global.cshtml" />
+    <Content Include="Views\Cryptocurrency\Listing.cshtml" />
+    <Content Include="Views\Cryptocurrency\Currency.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

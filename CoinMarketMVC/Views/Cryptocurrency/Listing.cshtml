@@ -1,0 +1,63 @@
+﻿@model CoinmarketcapAPIv2.DataContracts.Listings.Listings
+@{
+    ViewBag.Title = "Listing";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model.Data)
+        {
+            <label class="btn btn-info">
+                @Html.ActionLink(item.Name, "Currency", "Cryptocurrency", new { id = item.ID }, null)
+            </label>
+        }
+        @*<table class="table table-bordered table-responsive table-hover">
+                <tr>
+                    <td>
+                        SELECT
+                    </td>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Symbol
+                    </th>
+                    <th>
+                        WebsiteSlug
+                    </th>
+                </tr>
+                <tbody>
+                    @foreach (var item in Model.Data )
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(item.Name,"Currency","Cryptocurrency",new {  id = item.ID },null)
+                            </td>
+                            <td>
+                                @item.ID
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Symbol
+                            </td>
+                            <td>
+                                @item.WebsiteSlug
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>*@
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+
+

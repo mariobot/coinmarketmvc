@@ -1,0 +1,20 @@
+﻿@model CoinmarketcapAPIv2.DataContracts.Global.Global
+
+@{
+    ViewBag.Title = "Global Info";
+}
+
+<h2>Global Info</h2>
+
+<h3>Active Criptocurrencies: @Model.Data.ActiveCryptocurrencies</h3>
+<h3>Active Markets: @Model.Data.ActiveMarkets</h3>
+<h3>Active BTCPecentageofMarket: @Model.Data.BitcoinPercentageOfMarketCap</h3>
+
+<ul>
+    @foreach (var item in Model.Data.Quotes)
+    {
+        <li>@item.Value.TotalMarketCap</li>
+
+    }
+</ul>
+

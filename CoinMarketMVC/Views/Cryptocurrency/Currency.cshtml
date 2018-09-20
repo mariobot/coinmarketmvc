@@ -1,0 +1,57 @@
+﻿@model CoinmarketcapAPIv2.DataContracts.Ticker.TickerSpecific
+
+@{
+    ViewBag.Title = "Currency";   
+}
+
+<h2>Currency Info</h2>
+
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>ID</dt>
+        <dd>@Model.Data.Id</dd>
+        <dt>Name</dt>
+        <dd>@Model.Data.Name</dd>
+        <dt>Symbol</dt>
+        <dd>@Model.Data.Symbol</dd>
+        <dt>Rank</dt>
+        <dd>@Model.Data.Rank</dd>
+        <dt>Website Slug</dt>
+        <dd>@Model.Data.WebsiteSlug</dd>
+        <dt></dt>
+        <dd>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Currency</td>
+                        <td>Price</td>
+                        <td>Percent 1H</td>
+                        <td>Percent 24H</td>
+                        <td>Percent 7D</td>
+                        <td>Volume 24H</td>
+                        <td>MarketCap</td>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Data.Quotes)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+                            <td>@item.Value.Price</td>
+                            <td>@item.Value.PercentChange1h</td>
+                            <td>@item.Value.PercentChange24h</td>
+                            <td>@item.Value.PercentChange7d</td>
+                            <td>@item.Value.Volume24H</td>
+                            <td>@item.Value.MarketCap</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

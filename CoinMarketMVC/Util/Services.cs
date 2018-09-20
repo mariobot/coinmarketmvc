@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -71,6 +72,25 @@ namespace CoinMarketMVC.Util
                 }
                 throw;
             }
+        }
+
+        private static List<T> CastDataToList<T>(string result) //where T : System.IComparable<T>
+        {
+            JObject resultObject = JObject.Parse(result);
+
+            // get JSON result objects into a list
+            List<JToken> results = resultObject["data"].Children().ToList();
+
+            // serialize JSON results into .NET objects
+            List<T> ListaEntidades = new List<T>();
+            foreach (JToken item in results)
+            {
+                // JToken.ToObject is a helper method that uses JsonSerializer internally
+                T Entidad = item.ToObject<T>();
+                ListaEntidades.Add(Entidad);
+            }
+
+            return ListaEntidades;
         }
     }
 }
