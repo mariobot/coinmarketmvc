@@ -54,11 +54,11 @@ namespace CoinMarketMVC.Controllers
         public ActionResult Contact()
         {
             
-            string conString = System.Configuration.ConfigurationManager.AppSettings["SQLSERVER_CONNECTION_STRING"]; 
-            string conString2 = System.Configuration.ConfigurationManager.AppSettings["SQLSERVER_URI"];
+            //string conString = System.Configuration.ConfigurationManager.AppSettings["SQLSERVER_CONNECTION_STRING"]; 
+            //string conString2 = System.Configuration.ConfigurationManager.AppSettings["SQLSERVER_URI"];
 
-            ViewBag.Message = conString;
-            ViewBag.Message2 = conString2;
+            //ViewBag.Message = conString;
+            //ViewBag.Message2 = conString2;
 
             return View();
         }       
