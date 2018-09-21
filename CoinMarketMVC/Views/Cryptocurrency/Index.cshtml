@@ -2,12 +2,13 @@
 @{
     ViewBag.Title = "Cryptocurrency";
 }
-
+<br />
 <div class="row">
     <div class="col-md-12">
         <table class="table table-bordered table-responsive table-hover">
             <tr>
                 <th>Id</th>
+                <th>IMG</th>
                 <th>name</th>
                 <th>symbol</th>
                 <th>rank</th>
@@ -23,56 +24,56 @@
             <tbody>
                 @foreach (var item in Model.Data)
                 {
-                <tr>
-                    <td>
-                        <fieldset>
-                            <label class="btn btn-info">
-                                @Html.ActionLink(item.Value.Name, "Currency", "Cryptocurrency", new { id = item.Value.Id }, null)
-                            </label>
-                        </fieldset>
-                    </td>
-                    <td>@item.Value.Name</td>
-                    <td>@item.Value.Symbol</td>
-                    <td>@item.Value.Rank</td>
-                    <td>@item.Value.WebsiteSlug</td>
-                    <td>@item.Value.Quotes["USD"].Price</td>
-                    <td>
-                        @if (item.Value.Quotes["USD"].PercentChange1h < 0)
-                        {
-                            <label style="color:red">@item.Value.Quotes["USD"].PercentChange1h</label>
-                        }
-                        else
-                        {
-                            <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange1h</label>
-                        }
-                    </td>
-                    <td>
-                        @if (item.Value.Quotes["USD"].PercentChange24h < 0)
-                        {
-                            <label style="color:red">@item.Value.Quotes["USD"].PercentChange24h</label>
-                        }
-                        else
-                        {
-                            <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange24h</label>
-                        }
-                    </td>
-                    <td>
-                        @if (item.Value.Quotes["USD"].PercentChange7d < 0)
-                        {
-                            <label style="color:red">@item.Value.Quotes["USD"].PercentChange7d</label>
-                        }
-                        else
-                        {
-                            <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange7d</label>
-                        }
-                    </td>                    
-                    <td>@item.Value.Quotes["USD"].Volume24H</td>
-                    <td>@item.Value.Quotes["USD"].MarketCap</td>
-                    <td>@item.Value.LastUpdated</td>
-                </tr>
+                    <tr>
+                        <td>
+                            <fieldset>
+                                <a href="@Url.Action("Currency", "Cryptocurrency", new { id = item.Value.Id })"><span class="glyphicon glyphicon-play"></span>
+                                </a>
+                            </fieldset>
+                        </td>
+                        <td><img src="@string.Format("https://s2.coinmarketcap.com/static/img/coins/32x32/{0}.png",item.Value.Id)" /></td>
+                        <td>@item.Value.Name</td>
+                        <td>@item.Value.Symbol</td>
+                        <td>@item.Value.Rank</td>
+                        <td>@item.Value.WebsiteSlug</td>
+                        <td>@item.Value.Quotes["USD"].Price</td>
+                        <td>
+                            @if (item.Value.Quotes["USD"].PercentChange1h < 0)
+                            {
+                                <label style="color:red">@item.Value.Quotes["USD"].PercentChange1h</label>
+                            }
+                            else
+                            {
+                                <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange1h</label>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Value.Quotes["USD"].PercentChange24h < 0)
+                            {
+                                <label style="color:red">@item.Value.Quotes["USD"].PercentChange24h</label>
+                            }
+                            else
+                            {
+                                <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange24h</label>
+                            }
+                        </td>
+                        <td>
+                            @if (item.Value.Quotes["USD"].PercentChange7d < 0)
+                            {
+                                <label style="color:red">@item.Value.Quotes["USD"].PercentChange7d</label>
+                            }
+                            else
+                            {
+                                <label style="color:limegreen">@item.Value.Quotes["USD"].PercentChange7d</label>
+                            }
+                        </td>
+                        <td>@item.Value.Quotes["USD"].Volume24H</td>
+                        <td>@item.Value.Quotes["USD"].MarketCap</td>
+                        <td><a href="" data-toggle="popover" title="@item.Value.LastUpdated" data-content=""><span class="glyphicon glyphicon-calendar"></span></a></td>
+                    </tr>
                 }
             </tbody>
         </table>
-    </div>    
+    </div>
 </div>
 

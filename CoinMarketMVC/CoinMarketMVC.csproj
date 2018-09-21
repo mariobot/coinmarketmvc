@@ -154,10 +154,12 @@
     <Compile Include="CoinmarketcapAPI.cs" />
     <Compile Include="Controllers\CryptocurrencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WebsiteController.cs" />
     <Compile Include="DataContracts\Currencies\AssetSymbols.cs" />
     <Compile Include="DataContracts\Global\Global.cs" />
     <Compile Include="DataContracts\Listings\Listings.cs" />
     <Compile Include="DataContracts\Metadata.cs" />
+    <Compile Include="DataContracts\Microlink\Microlink.cs" />
     <Compile Include="DataContracts\Ticker\Ticker.cs" />
     <Compile Include="DataContracts\Ticker\TickerSpecific.cs" />
     <Compile Include="Endpoints\Endpoints.cs" />
@@ -215,6 +217,7 @@
     <Content Include="Views\Cryptocurrency\Global.cshtml" />
     <Content Include="Views\Cryptocurrency\Listing.cshtml" />
     <Content Include="Views\Cryptocurrency\Currency.cshtml" />
+    <Content Include="Views\Website\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
